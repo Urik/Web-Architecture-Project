@@ -6,7 +6,7 @@ class LoginController {
 
     function __construct() {
         if (isset($_POST["name"]) && isset($_POST["family_name"])) {
-
+/**/
             $model = new LoginModel();
             $user = $model->getUser($_POST["name"], $_POST["family_name"]);
             if (!is_null($user)) {

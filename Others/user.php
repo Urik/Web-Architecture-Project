@@ -11,13 +11,14 @@ class User extends Thing implements IUser {
      * @var $password string
      */
     
-    private $id = 0;
+    /** @var string */
     private $nick = "";
-    /* @var string */
+    /** @var string */
     private $password = "";
+    /** @var string */
     private $email = "";
-
-//		private $birthday = getdate();
+    /** @var DateTime */
+    private $birthday;
 
     /**
      * 
@@ -26,14 +27,9 @@ class User extends Thing implements IUser {
      * @param type $email
      * @param type $birthday
      */
-    function __construct($user, $password, $email, $birthday) {
+    function __construct(string $user, string $password, string $email, DateTime $birthday) {
         $this->nick = $user;
         $this->password = $password;
-    }
-
-    public function getId() {
-        
-        return $this->id;
     }
 
     public function getNick() {

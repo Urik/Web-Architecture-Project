@@ -2,7 +2,7 @@
 
 require("IUser.php");
 
-class UserDecorator implements IUser {
+abstract class UserDecorator implements IUser {
     /* @var $user User */
     private $user;
 

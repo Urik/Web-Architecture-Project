@@ -13,7 +13,7 @@
 <?php
 if(!empty($_POST['email'])){
 	session_start();
-	require_once("Controlador/Login.php");
+	require_once("Controllers/Login.php");
 	$login = new Login();
 	$usertype = $login->loguear($_POST['email'],$_POST['pass']); 
 	echo $usertype;
@@ -23,16 +23,16 @@ if(!empty($_POST['email'])){
 	else
 	{
 		switch ($usertype){
-	case "1": 
-		header('Location: home_admin.php');
-		break;
-	case "2":
-		header('Location: home_compania.php');
-		break;
-	case "3":
-		header('Location: home_productor.php');
-		break;
-	}
+		case "1": 
+			header('Location: home_admin.php');
+			break;
+		case "2":
+			header('Location: home_compania.php');
+			break;
+		case "3":
+			header('Location: home_productor.php');
+			break;
+		}
 	}
 	
 }
@@ -54,7 +54,7 @@ $("#login_form").validate({
 				email: "ingrese un email valido."
 			},
 			pass:{
-				required: "campo requerido.",
+				required: "campo requerido."
 			}
 		}
 	});

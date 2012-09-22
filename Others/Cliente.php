@@ -9,7 +9,7 @@ class Cliente extends User {
     private $productorId;
     /** @var Productor */
     private $productor = null;
-    
+     
     public function getAdminId() {
         return $this->adminId;
     }

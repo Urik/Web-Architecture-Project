@@ -19,6 +19,8 @@ class User extends Thing implements IUser {
     private $email = "";
     /** @var DateTime */
     private $birthday;
+    
+    private $view;
 
     /**
      * 
@@ -46,6 +48,14 @@ class User extends Thing implements IUser {
 
     public function getBirthday() {
         return $this->email;
+    }
+    
+    public function getView() {
+        return $this->view;
+    }
+    
+    public function setView($view) {
+        $this->view = $view;
     }
 
 }

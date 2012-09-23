@@ -13,7 +13,7 @@
 class ProductorView extends UserView {
     public function showHome() {
         parent::showHome();
-        include './WebPages/home_productor';
+        header('Location" ./WebPages/home_productor');
     }
 
 }

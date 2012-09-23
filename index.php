@@ -11,30 +11,15 @@
 <body>
 <h1>Login</h1>
 <?php
-if(!empty($_POST['email'])){
-	session_start();
-	require_once("Controllers/Login.php");
-	$login = new Login();
-	$usertype = $login->loguear($_POST['email'],$_POST['pass']); 
-	echo $usertype;
-	if ($usertype == ""){
-		echo "<p>Usuario o contraseña incorrectos</p>";
-	}
-	else
-	{
-		switch ($usertype){
-		case "1": 
-			header('Location: home_admin.php');
-			break;
-		case "2":
-			header('Location: home_compania.php');
-			break;
-		case "3":
-			header('Location: home_productor.php');
-			break;
-		}
-	}
-	
+if (!empty($_POST['email'])) {
+    session_start();
+    require_once("Controllers/Login.php");
+    $login = new Login();
+    $user = $login->loguear($_POST['email'], $_POST['pass']);
+    
+    if(!is_null($user)){
+        $user->getView()->showHome();
+    }
 }
 ?>
 <form action="index.php" method="POST" name="login_form" id="login_form">

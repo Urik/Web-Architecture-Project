@@ -4,22 +4,31 @@ require_once "DBConnection.php";
 
 class Login {
 
+    /**
+     * Returns a User if logged in, and a null if not logged in.
+     * @param string $email
+     * @param string $pass
+     * @return User
+     */
     public function loguear($email, $pass) {
         $dbHandler = new DBConnection();
         $conexion = $dbHandler->connect();
         mysql_select_db(constant("DB_NAME"), $conexion);
-        $query = "SELECT email,user_type FROM  `users` WHERE `password` LIKE '" . $pass . "' AND `email` LIKE '" . $email . "'";
+        $query = "SELECT id,email,user_type FROM  `users` WHERE `password` LIKE '" . $pass . "' AND `email` LIKE '" . $email . "'";
         $res = mysql_query($query, $conexion) or die(mysql_error());
         if ($res) {
             session_start();
             while ($row = mysql_fetch_assoc($res)) {
                 $_SESSION["user_Actual"] = $row['email'];
                 $_SESSION["user_Type_Actual"] = $row['user_type'];
-                return $row['user_type'];
+                require_once "../Others/UserFactory.php";
+                $userFactory = new UserFactory();
+                $user = $userFactory->get($row["id"], $row["user_type"]);
+                return $user;
             }
         }
         else
-            return "";
+            return null;
     }
 
 }

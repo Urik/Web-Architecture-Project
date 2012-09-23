@@ -16,7 +16,7 @@ class AdministratorView extends UserView {
 
     public function showHome() {
         parent::showHome();
-        include './WebPages/home_admin.php';
+        header('Location: ./WebPages/home_admin.php');
     }
 
 }

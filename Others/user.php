@@ -54,6 +54,10 @@ class User extends Thing implements IUser {
         return $this->email;
     }
     
+    /**
+     * 
+     * @return UserView
+     */
     public function getView() {
         return $this->view;
     }

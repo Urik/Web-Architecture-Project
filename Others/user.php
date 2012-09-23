@@ -62,6 +62,15 @@ class User extends Thing implements IUser {
         $this->view = $view;
     }
 
+    public function getVariablesAsMap() {
+        $variables = array(
+            "id" => $this->id,
+            "nick" => $this->nick,
+            "password" => $this->password,
+            "email" => $this->email,
+            "birthday" => $this->birthday
+        );
+    }
 }
 
 

@@ -8,8 +8,28 @@ abstract class DAO {
      */
     public abstract function getByValues($properties);
 
+    /**
+     * Gets an object by its ID.
+     */
     public abstract function get($id);
+        
+    /**
+     * Updates an object on the database.
+     */
+    public abstract function update($object);
+        
+    /**
+     * Deletes an object from the database.
+     */
+    public abstract function delete($object);
     
+    /**
+     * 
+     * @param type $table The name of the table for the query.
+     * @param type $values A map of the form columnName => value
+     * @param type $connection The DB connection
+     * @return type An array containing arrays that represent each row.
+     */
     public function performQuery($table, $values, $connection) {
         $query = "SELECT * 
             FROM $table 

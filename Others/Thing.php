@@ -13,6 +13,8 @@
 class Thing {
     private $id = 0;
     
+    private $DAO;
+    
     /**
      * Gets the id of the object.
      * @return int
@@ -20,6 +22,16 @@ class Thing {
     public function getId() {
         return $this->id;
     }
+    
+    public function getDAO() {
+        return $this->DAO;
+    }
+
+    public function setDAO($DAO) {
+        $this->DAO = $DAO;
+    }
+
+
 }
 
 ?>

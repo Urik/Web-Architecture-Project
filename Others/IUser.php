@@ -11,6 +11,8 @@ interface IUser {
     public function getEmail();
 
     public function getBirthday();
+    
+    public function getVariablesAsMap();
 }
 
 ?>

@@ -65,7 +65,7 @@ if(!empty($_POST['e_mail'])){
 		$direccion=$_POST['direccion_p'];
 		$telefono_1=$_POST['telefono_1'];
 		$telefono_2=$_POST['telefono_2'];
-		$productor = new Productor($DNI,$nombre,$apellido,$direccion,$email,$telefono_1,$telefono_2);
+		$productor = new Producer($DNI,$nombre,$apellido,$direccion,$email,$telefono_1,$telefono_2);
 		$alta->AltaProductor($productor, $user);
 	}
 	else{

@@ -13,7 +13,8 @@ class UserDAO extends DAO {
         $rows = parent::performQuery($this->tableName, $parameters, $connection);
         $user = null;
         if(count($rows) > 0) {
-            $user = new User($rows["id"], $rows["nick"], $rows["password"], $rows["email"], $rows["birthday"]);
+            $row = next($rows);
+            $user = new User($row["id"], $row["nick"], $row["password"], $row["email"], $row["birthday"]);
         }
         return $user;
     }

@@ -7,7 +7,7 @@ class Cliente extends User {
     private $dni;
     private $direccion;
     private $productorId;
-    /** @var Productor */
+    /** @var Producer */
     private $productor = null;
      
     public function getAdminId() {

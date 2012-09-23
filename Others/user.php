@@ -11,6 +11,7 @@ class User extends Thing implements IUser {
      * @var $password string
      */
     
+    private $id = 0;
     /** @var string */
     private $nick = "";
     /** @var string */
@@ -24,14 +25,17 @@ class User extends Thing implements IUser {
 
     /**
      * 
-     * @param string $user
+     * @param string $nick
      * @param char[] $password
      * @param type $email
      * @param type $birthday
      */
-    function __construct(string $user, string $password, string $email, DateTime $birthday) {
-        $this->nick = $user;
+    function __construct($id, $nick, $password, $email, DateTime $birthday) {
+        $this->id = $id;
+        $this->nick = $nick;
         $this->password = $password;
+        $this->email = $email;
+        $this->birthday = $birthday;
     }
 
     public function getNick() {

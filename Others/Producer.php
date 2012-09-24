@@ -1,12 +1,13 @@
 <?php
 
+require_once "Others/IUser.php";
+
 class Producer implements IUser {
 
     private $DNI;
     private $nombre;
     private $apellido;
     private $direccion;
-    private $email;
     private $telefono_1;
     private $telefono_2;
     
@@ -23,12 +24,11 @@ class Producer implements IUser {
      * @param type $telefono_1
      * @param type $telefono_2
      */
-    public function __construct($DNI, $nombre, $apellido, $direccion, $email, $telefono_1, $telefono_2) {
+    public function __construct($DNI, $nombre, $apellido, $direccion, $telefono_1, $telefono_2) {
         $this->DNI = $DNI;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->direccion = $direccion;
-        $this->email = $email;
         $this->telefono_1 = $telefono_1;
         $this->telefono_2 = $telefono_2;
     }
@@ -126,6 +126,10 @@ class Producer implements IUser {
 
     public function getPassword() {
         return $this->user->getPassword();
+    }
+    
+    public function getView() {
+        return $this->user->getView();
     }
 }
 

@@ -1,10 +1,18 @@
 <?php
 
-require_once "DAO.php";
+require_once "Others/user.php";
+
+require_once "DAOs/DAO.php";
 
 class UserDAO extends DAO {
     private $tableName = "users";
     
+    
+    /**
+     * 
+     * @param string $id
+     * @return User
+     */
     public function get($id) {
         $connection = (new DBConnection())->connect();
         $parameters = array(
@@ -13,8 +21,8 @@ class UserDAO extends DAO {
         $rows = parent::performQuery($this->tableName, $parameters, $connection);
         $user = null;
         if(count($rows) > 0) {
-            $row = next($rows);
-            $user = new User($row["id"], $row["nick"], $row["password"], $row["email"], $row["birthday"]);
+            $row = $rows[0];
+            $user = new User($row["id"], $row["nick"], $row["password"], $row["email"], new DateTime($row["birth_date"]));
         }
         return $user;
     }
@@ -40,11 +48,21 @@ class UserDAO extends DAO {
         return $users;
     }
     
-    public function delete(User $object) {
+    /**
+     * 
+     * @param User $object
+     * @return boolean
+     */
+    public function delete($object) {
         return (new DAOCommonImpl())->delete($object->getId(), $this->tableName);
     }
 
-    public function update(User $object) {
+    /**
+     * 
+     * @param User $object
+     * @return boolean
+     */
+    public function update($object) {
         $variables = $object->getVariablesAsMap();
         return (new DAOCommonImpl())->update($this->tableName, $variables);
     }

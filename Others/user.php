@@ -72,7 +72,7 @@ class User extends Thing implements IUser {
             "nick" => $this->nick,
             "password" => $this->password,
             "email" => $this->email,
-            "birthday" => $this->birthday
+            "birth_date" => $this->birthday
         );
     }
 }

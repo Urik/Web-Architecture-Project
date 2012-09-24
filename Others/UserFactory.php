@@ -1,12 +1,8 @@
 <?php
 
-require_once "../DAOs/ProducerDAO.php";
+require_once "DAOs/ProducerDAO.php";
 
 class UserFactory {
-
-    public function __construct() {
-    }
-
 
     public function get($id, $userType) {
         $user = null;
@@ -16,8 +12,7 @@ class UserFactory {
             case "2": //Compaia
                 break;
             case "3": //Productor
-                $producerDAO = new ProducerDAO();
-                $user = $producerDAO->get($id);
+                $user = (new ProducerDAO())->get($id);
                 break;
         }
         return $user;

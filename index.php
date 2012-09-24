@@ -11,9 +11,9 @@
 <body>
 <h1>Login</h1>
 <?php
+require_once("Controllers/Login.php");
 if (!empty($_POST['email'])) {
     session_start();
-    require_once("Controllers/Login.php");
     $login = new Login();
     $user = $login->loguear($_POST['email'], $_POST['pass']);
     

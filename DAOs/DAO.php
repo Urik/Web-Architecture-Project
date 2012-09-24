@@ -38,7 +38,7 @@ abstract class DAO {
             $query .= "$name = $value AND";
         }
         //Deletes the last AND from the query
-        $query = substr($query, 0, strlen($query) - strrpos($query, "AND"));
+        $query = substr($query, 0, strrpos($query, "AND"));
         $result = mysql_query($query, $connection) or die(mysql_error());
         $rows = array();
         

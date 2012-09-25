@@ -1,7 +1,7 @@
 <?php
 
 require_once "Thing.php";
-require("IUser.php");
+require_once("IUser.php");
 
 class User extends Thing implements IUser {
 
@@ -11,7 +11,6 @@ class User extends Thing implements IUser {
      * @var $password string
      */
     
-    private $id = 0;
     /** @var string */
     private $nick = "";
     /** @var string */
@@ -32,7 +31,7 @@ class User extends Thing implements IUser {
      * @param type $birthday
      */
     function __construct($id, $nick, $password, $email, DateTime $birthday) {
-        $this->id = $id;
+        parent::setId($id);
         $this->nick = $nick;
         $this->password = $password;
         $this->email = $email;
@@ -66,7 +65,7 @@ class User extends Thing implements IUser {
     public function setView($view) {
         $this->view = $view;
     }
-
+    
     public function getVariablesAsMap() {
         $variables = array(
             "id" => $this->id,
@@ -75,6 +74,7 @@ class User extends Thing implements IUser {
             "email" => $this->email,
             "birth_date" => $this->birthday
         );
+        return $variables;
     }
 }
 

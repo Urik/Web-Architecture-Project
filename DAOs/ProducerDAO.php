@@ -1,6 +1,5 @@
 <?php
 
-require_once "Views/ProductorView.php";
 
 require_once "DAOs/UserDAO.php";
 
@@ -39,11 +38,10 @@ class ProducerDAO extends DAO{
 
     public function getByValues($properties) {
         $connection = (new DBConnection())->connect();
-        $rows = parent::performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection);
         $producers = array();
         foreach($rows as $row) {
             $user = (new UserDAO())->get($row["user_id"]);
-            $user->setView(new ProductorView());
             $producer = new Producer($row["dni"], $row["nombre"], $row["apellido"], $row["direccion"], $row["telefono_1"], $row["telefono_2"], $user);
             $producers[] = $producer;
         }

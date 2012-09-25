@@ -26,6 +26,10 @@ class Thing {
     public function getDAO() {
         return $this->DAO;
     }
+    
+    public function setId($id) {
+        $this->id = $id;
+    }
 
     public function setDAO($DAO) {
         $this->DAO = $DAO;

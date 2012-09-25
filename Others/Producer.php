@@ -13,7 +13,7 @@ class Producer implements IUser {
     
     /** @var User */
     private $user;
-
+    
     /**
      * Should only be used by DAO's
      * @param type $DNI

@@ -1,5 +1,7 @@
 <?php
 
+require_once "Others/HomePageFactory.php";
+
 require_once "Views/IndexView.php";
 
 require_once "Controllers/Login.php";
@@ -22,7 +24,8 @@ class IndexController {
             $user = $login->loguear($_POST['email'], $_POST['pass']);
 
             if (!is_null($user)) {
-                $user->showHomePage(null);
+                $controller = (new HomePageFactory())->getController($user);
+                $controller->showHome();
             }
         } else {
             $this->view->showIndex();

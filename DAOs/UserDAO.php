@@ -7,7 +7,6 @@ require_once "DAOs/DAO.php";
 class UserDAO extends DAO {
     private $tableName = "users";
     
-    
     /**
      * 
      * @param string $id

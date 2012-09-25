@@ -6,20 +6,18 @@ class Cliente implements IUser{
     private $apellido;
     private $dni;
     private $direccion;
-    private $productorId;
     /** @var Producer */
     private $productor = null;
     
     /** @var User */
     private $user;
 
-    function __construct($id, $nombre, $apellido, $dni, $direccion, $productorId, $productor, $user) {
+    function __construct($id, $nombre, $apellido, $dni, $direccion, $productor, $user) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->dni = $dni;
         $this->direccion = $direccion;
-        $this->productorId = $productorId;
         $this->productor = $productor;
         $this->user = $user;
     }
@@ -64,16 +62,6 @@ class Cliente implements IUser{
         $this->direccion = $direccion;
     }
 
-    public function getProductorId() {
-        if (is_null($this->productor)) {
-            
-        }
-    }
-
-    public function setProductorId($productorId) {
-        $this->productorId = $productorId;
-    }
-
     public function getProductor() {
         return $this->productor;
     }
@@ -114,7 +102,6 @@ class Cliente implements IUser{
     public function showHomePage($parameters) {
         $this->user->showHomePage($parameters);
     }
-
 }
 
 ?>

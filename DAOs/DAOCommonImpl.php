@@ -1,7 +1,7 @@
 <?php
 
 class DAOCommonImpl {
-    public function update($table, $parameters) {
+    public function update($parameters, $table) {
         $connection = (new DBConnection())->connect();
         $sql = 'UPDATE ' . $table . 
                 'SET ';

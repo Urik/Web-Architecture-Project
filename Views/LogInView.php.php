@@ -10,7 +10,7 @@
  *
  * @author Usuario
  */
-class NotLoggedInView {
+class LogInView {
     function __construct() {
         include 'NotLoggedInTemplate.php';
     }

@@ -24,13 +24,14 @@ class Producer implements IUser {
      * @param type $telefono_1
      * @param type $telefono_2
      */
-    public function __construct($DNI, $nombre, $apellido, $direccion, $telefono_1, $telefono_2) {
+    public function __construct($DNI, $nombre, $apellido, $direccion, $telefono_1, $telefono_2, $user) {
         $this->DNI = $DNI;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->direccion = $direccion;
         $this->telefono_1 = $telefono_1;
         $this->telefono_2 = $telefono_2;
+        $this->user = $user;
     }
 
     public function getVariablesAsMap() {
@@ -131,6 +132,11 @@ class Producer implements IUser {
     public function getView() {
         return $this->user->getView();
     }
+    
+    public function showHomePage($parameters) {
+        $this->user->showHomePage($parameters);
+    }
+
 }
 
 ?>

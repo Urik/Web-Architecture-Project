@@ -11,7 +11,7 @@
  * @author Usuario
  */
 abstract class UserView {
-    public abstract function showHome();
+    public abstract function showHome($parameters);
 }
 
 ?>

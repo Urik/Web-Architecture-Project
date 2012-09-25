@@ -21,6 +21,7 @@ class User extends Thing implements IUser {
     /** @var DateTime */
     private $birthday;
     
+    /** @var UserView */
     private $view;
 
     /**
@@ -58,8 +59,8 @@ class User extends Thing implements IUser {
      * 
      * @return UserView
      */
-    public function getView() {
-        return $this->view;
+    public function showHomePage($parameters){
+        return $this->view->showHome($parameters);
     }
     
     public function setView($view) {

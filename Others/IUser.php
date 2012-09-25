@@ -13,6 +13,8 @@ interface IUser {
     public function getBirthday();
     
     public function getVariablesAsMap();
+    
+    public function showHomePage($parameters);
 }
 
 ?>

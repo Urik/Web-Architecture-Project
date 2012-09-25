@@ -13,7 +13,9 @@ require_once "Views/UserView.php";
  * @author Usuario
  */
 class ProductorView extends UserView {
-    public function showHome() {
+    
+    
+    public function showHome($parameters) {
         header('Location: Views/WebPages/home_productor.php');
     }
 

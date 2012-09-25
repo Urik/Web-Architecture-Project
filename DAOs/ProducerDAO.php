@@ -42,10 +42,9 @@ class ProducerDAO extends DAO{
         $rows = parent::performQuery($this->tableName, $properties, $connection);
         $producers = array();
         foreach($rows as $row) {
-            $producer = new Producer($row["dni"], $row["nombre"], $row["apellido"], $row["direccion"], $row["telefono_1"], $row["telefono_2"]);
             $user = (new UserDAO())->get($row["user_id"]);
             $user->setView(new ProductorView());
-            $producer->setUser($user);
+            $producer = new Producer($row["dni"], $row["nombre"], $row["apellido"], $row["direccion"], $row["telefono_1"], $row["telefono_2"], $user);
             $producers[] = $producer;
         }
         return $producers;
@@ -58,7 +57,7 @@ class ProducerDAO extends DAO{
      */
     public function update($object) {
         $variables = $object->getVariablesAsMap();
-        return (new DAOCommonImpl())->update($this->tableName, $variables) &&
+        return (new DAOCommonImpl())->update($variables, $this->tableName ) &&
             (new UserDAO())->update($object->getUser());
     }
     

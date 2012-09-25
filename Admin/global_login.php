@@ -30,7 +30,7 @@ switch ($usertype){
 if(!empty($_POST['email'])){
 	require_once("../Controlador/Login.php");
 	$_SESSION["session_Actual"] = $_SESSION;
-	$login = new Login();
+	$login = new LoginController();
 	$usertype = $login->loguear($_POST['email'],$_POST['pass']); 
 	echo $usertype;
 	if ($usertype == ""){

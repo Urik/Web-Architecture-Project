@@ -1,16 +1,8 @@
 <?php
 require_once("Controllers/Conexion.php");
-/*
 
- */
-
-/**
- * Description of DBConnection
- *
- * @author Usuario
- */
 class DBConnection {
-    public function connect() {
+        public function connect() {
         $conexion = mysql_connect(constant("SERVER"), constant("DB_USER"), constant("DB_PASS"));
         return $conexion;
     }

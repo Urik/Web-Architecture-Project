@@ -21,6 +21,10 @@ class Cliente implements IUser{
         $this->productor = $productor;
         $this->user = $user;
     }
+    
+    public function getCoberturas() {
+        
+    }
 
     public function getId() {
         return $this->$id;
@@ -101,6 +105,10 @@ class Cliente implements IUser{
 
     public function showHomePage($parameters) {
         $this->user->showHomePage($parameters);
+    }
+    
+    public function getCoberturas() {
+        
     }
 }
 

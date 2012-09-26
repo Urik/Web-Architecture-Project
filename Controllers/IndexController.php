@@ -24,8 +24,8 @@ class IndexController {
             $user = $login->loguear($_POST['email'], $_POST['pass']);
 
             if (!is_null($user)) {
-                $controller = (new HomePageFactory())->getController($user);
-                $controller->showHome();
+                $homePage = (new HomePageFactory())->getController($user);
+                $homePage->showHome();
             }
         } else {
             $this->view->showIndex();

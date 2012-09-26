@@ -15,6 +15,13 @@ class HomePageController {
         return $this->view->showHome(array());
     }
     
+    public function getView() {
+        return $this->view;
+    }
+    
+    public function getModel() {
+        return $this->model;
+    }
 }
 
 ?>

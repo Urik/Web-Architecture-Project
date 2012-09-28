@@ -52,8 +52,9 @@ class Cobertura extends Thing {
             "id" => $this->getId(),
             "descripcion" => $this->descripcion,
             "taza" => $this->getTaza(),
-            "compania_id" => $this->getCompania()->get
-        )
+            "compania_id" => $this->getCompania()->getId()
+        );
+        return $map;
     }
 
 }

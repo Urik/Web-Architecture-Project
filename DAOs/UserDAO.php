@@ -65,6 +65,11 @@ class UserDAO extends DAO {
         $variables = $object->getVariablesAsMap();
         return (new DAOCommonImpl())->update($variables, $this->tableName);
     }
+    
+    public function create($variables) {
+        $connection = (new DBConnection())->connect();
+        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+    }
 }
 
 ?>

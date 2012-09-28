@@ -2,6 +2,8 @@
 
 abstract class DAO {
 
+    public abstract function create($variables);
+
     /**
      * $properties should be an array of type ["field" => "value"]
      * Returns an array of the objects that satisfy certain property.
@@ -12,17 +14,17 @@ abstract class DAO {
      * Gets an object by its ID.
      */
     public abstract function get($id);
-        
+
     /**
      * Updates an object on the database.
      */
     public abstract function update($object);
-        
+
     /**
      * Deletes an object from the database.
      */
     public abstract function delete($object);
-    
+
     /**
      * 
      * @param type $table The name of the table for the query.
@@ -41,12 +43,13 @@ abstract class DAO {
         $query = substr($query, 0, strrpos($query, "AND"));
         $result = mysql_query($query, $connection) or die(mysql_error());
         $rows = array();
-        
+
         while ($row = mysql_fetch_array($result)) {
             $rows[] = $row;
         }
         return $rows;
     }
+
 }
 
 ?>

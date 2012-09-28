@@ -59,6 +59,10 @@ class ProducerDAO extends DAO{
             (new UserDAO())->update($object->getUser());
     }
     
+    public function create($variables) {
+        $connection = (new DBConnection())->connect();
+        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+    }
     
 }
 

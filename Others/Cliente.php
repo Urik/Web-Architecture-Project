@@ -1,5 +1,7 @@
 <?php
 
+require_once "Others/IUser.php";
+
 class Cliente implements IUser{
     private $id;
     private $nombre;
@@ -23,7 +25,7 @@ class Cliente implements IUser{
     }
     
     public function getCoberturas() {
-        
+        //TODO Hacer coberturas
     }
 
     public function getId() {
@@ -105,10 +107,6 @@ class Cliente implements IUser{
 
     public function showHomePage($parameters) {
         $this->user->showHomePage($parameters);
-    }
-    
-    public function getCoberturas() {
-        
     }
 }
 

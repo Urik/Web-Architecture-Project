@@ -12,7 +12,6 @@ class IndexView {
     
     public function showIndex() {
         header("Location: Views/WebPages/Index/IndexTemplate.php");
-        exit();
     }
 }
 

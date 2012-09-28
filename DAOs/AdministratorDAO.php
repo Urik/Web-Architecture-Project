@@ -43,6 +43,12 @@ class AdministratorDAO extends DAO {
     public function update($object) {
         return (new DAOCommonImpl())->update($object->getVariablesAsMap(), $this->tableName);
     }
+    
+    public function create($variables) {
+        $connection = (new DBConnection())->connect();
+        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+    }
+
 
 }
 

@@ -53,15 +53,7 @@ class User extends Thing implements IUser {
     public function getBirthday() {
         return $this->email;
     }
-    
-    /**
-     * 
-     * @return UserView
-     */
-    public function showHomePage($parameters){
-        return $this->view->showHome($parameters);
-    }
-    
+        
     public function setView($view) {
         $this->view = $view;
     }

@@ -8,13 +8,18 @@ class Cliente implements IUser{
     private $apellido;
     private $dni;
     private $direccion;
+    private $telefono1 = "";
+    private $telefono2 = "";
+    private $cuit = "";
+    /** @var CondicionImpositiva */
+    private $condicionImpositiva;
     /** @var Producer */
     private $productor = null;
-    
+        
     /** @var User */
     private $user;
-
-    function __construct($id, $nombre, $apellido, $dni, $direccion, $productor, $user) {
+    
+    function __construct($id, $nombre, $apellido, $dni, $direccion, $productor, $user, $telefono1, $telefono2, $cuit, $condicionImpositiva) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -22,6 +27,10 @@ class Cliente implements IUser{
         $this->direccion = $direccion;
         $this->productor = $productor;
         $this->user = $user;
+        $this->telefono1 = $telefono1;
+        $this->telefono2 = $telefono2;
+        $this->cuit = $cuit;
+        $this->condicionImpositiva = $condicionImpositiva;
     }
     
     public function getCoberturas() {
@@ -91,6 +100,47 @@ class Cliente implements IUser{
     public function getPassword() {
         return $this->user->getPassword();
     }
+    
+    public function getTelefono1() {
+        return $this->telefono1;
+    }
+
+    public function setTelefono1($telefono1) {
+        $this->telefono1 = $telefono1;
+    }
+
+    public function getTelefono2() {
+        return $this->telefono2;
+    }
+
+    public function setTelefono2($telefono2) {
+        $this->telefono2 = $telefono2;
+    }
+
+    public function getCuit() {
+        return $this->cuit;
+    }
+
+    public function setCuit($cuit) {
+        $this->cuit = $cuit;
+    }
+
+    public function getCondicionImpositiva() {
+        return $this->condicionImpositiva;
+    }
+
+    public function setCondicionImpositiva($condicionImpositiva) {
+        $this->condicionImpositiva = $condicionImpositiva;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
 
     public function getVariablesAsMap() {
         $map = array(
@@ -103,10 +153,6 @@ class Cliente implements IUser{
             "user_id" => $this->user->getId()
         );
         return $map;
-    }
-
-    public function showHomePage($parameters) {
-        $this->user->showHomePage($parameters);
     }
 }
 

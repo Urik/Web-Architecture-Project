@@ -33,21 +33,14 @@ class Producer implements IUser {
         $this->telefono_2 = $telefono_2;
         $this->user = $user;
     }
+    
+    public function 
 
-    public function getVariablesAsMap() {
-        $map = array(
-            "dni" => $this->DNI,
-            "nombre" => $this->nombre,
-            "apellido" => $this->apellido,
-            "direccion" => $this->direccion,
-            "email" => $this->email,
-            "telefono_1" => $this->telefono_1,
-            "telefono_2" => $this->telefono_2,
-            "user_id" => $this->user->getId()
-        );
-        return $map;
+
+    public function createClient($nombre, $apellido, $dni, $direccion, $userId, $productorId) {
+        
     }
-
+    
     
     public function setDNI($DNI) {
         $this->DNI = $DNI;
@@ -133,8 +126,18 @@ class Producer implements IUser {
         return $this->user->getView();
     }
     
-    public function showHomePage($parameters) {
-        $this->user->showHomePage($parameters);
+    public function getVariablesAsMap() {
+        $map = array(
+            "dni" => $this->DNI,
+            "nombre" => $this->nombre,
+            "apellido" => $this->apellido,
+            "direccion" => $this->direccion,
+            "email" => $this->email,
+            "telefono_1" => $this->telefono_1,
+            "telefono_2" => $this->telefono_2,
+            "user_id" => $this->user->getId()
+        );
+        return $map;
     }
 
 }

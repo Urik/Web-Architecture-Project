@@ -1,10 +1,11 @@
 <?php
 
 class Cobertura extends Thing {
+
     private $descripcion = "";
-    private $taza = 000.00; 
+    private $taza = 000.00;
     private $compania = null;
-    
+
     public function __construct($id, $descripcion, $taza, $compania) {
         $this->setId($id);
         $this->descripcion = $descripcion;
@@ -12,17 +13,16 @@ class Cobertura extends Thing {
         $this->compania = $compania;
     }
 
-
     /**
      * @return Cliente[] 
      */
     public function getBeneficiarios() {
-        //TODO Obtener beneficiarios
+        return (new ClientDAO())->getByCobertura($this->getId(), new PeticionDeCoberturaDAO());
     }
-    
+
     /** @var Compania */
     private $compania = null;
-    
+
     public function getDescripcion() {
         return $this->descripcion;
     }

@@ -35,6 +35,23 @@ class ClientDAO extends DAO {
         return $clients;
     }
 
+        /**
+     * 
+     * @param string $coberturaId
+     * @param PeticionDeCoberturaDAO $peticionDeCoberturaDAO
+     */
+    public function getByCobertura($coberturaId, $peticionDeCoberturaDAO) {
+        $properties = array(
+            PeticionDeCoberturaColumns::COBERTURA_ID => $coberturaId
+        );
+        $peticiones = $peticionDeCoberturaDAO->getByValues($properties);
+        $clients = array();
+        foreach ($peticiones as $peticion) {
+            $clients[] = $peticion->getCliente();
+        }
+        return $clients;
+    }
+    
     /**
      * 
      * @param Cliente $object

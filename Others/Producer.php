@@ -10,7 +10,6 @@ class Producer implements IUser {
     private $direccion;
     private $telefono_1;
     private $telefono_2;
-    
     /** @var User */
     private $user;
     
@@ -34,11 +33,51 @@ class Producer implements IUser {
         $this->user = $user;
     }
     
-    public function 
 
-
-    public function createClient($nombre, $apellido, $dni, $direccion, $userId, $productorId) {
-        
+    /**
+     * Creates a new Client for the Producer
+     * @param type $nombre
+     * @param type $apellido
+     * @param type $dni
+     * @param type $direccion
+     * @param type $userId
+     * @param type $productorId
+     * @param ClientDAO $clientDAO
+     */
+    public function createClient($clientVariables, $clientDAO) {
+        $clientDAO->create($clientVariables);
+    }
+    
+    /**
+     * Creates an insurance petition for a customer. 
+     * @param string $client The customer we are making the insurance for.
+     * @param string $insurance The insurance the customer wants.
+     * @param string $datosDeUnidad Description of the car.
+     * @param int $modelo Year the car was made in
+     * @param int $suma Amount insured, in cents. 
+     * @param int $comisionReduction How much the producer wants to reduce from his comision, in cents.
+     * @param PeticionDeCoberturaDAO $insurancePetitionDAO  Petitions DAO.
+     */
+    public function askForInsurance($clientID, $insuranceID, $datosDeUnidad, $modelo, $suma, $comisionReduction, $insurancePetitionDAO) {
+        if (date("Y") - $modelo > 15) {
+            throw new InvalidModelException("The model can't be older than 15 years");
+        } 
+        return $insurancePetitionDAO->create([
+            PeticionDeCoberturaColumns::CLIENTE_ID => $clientID,
+            PeticionDeCoberturaColumns::COBERTURA_ID => $insuranceID,
+            PeticionDeCoberturaColumns::DATOS => $datosDeUnidad,
+            PeticionDeCoberturaColumns::MODELO => $modelo,
+            PeticionDeCoberturaColumns::SUMA_ASEGURADA => $suma,
+            PeticionDeCoberturaColumns::DISMINUCION_DE_COMISION => $comisionReduction
+        ]);
+    }
+    
+    /**
+     * 
+     * @param ClientDAO $clientDAO
+     */
+    public function getClients($clientDAO) {
+        return $clientDAO->getByValues([ClientColumns::PRODUCTOR_ID => $this->getId()]);
     }
     
     

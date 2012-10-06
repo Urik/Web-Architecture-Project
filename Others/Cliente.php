@@ -33,8 +33,15 @@ class Cliente implements IUser{
         $this->condicionImpositiva = $condicionImpositiva;
     }
     
-    public function getCoberturas() {
-        //TODO Hacer coberturas
+    /**
+     * 
+     * @param PeticionDeCoberturaDAO $coberturasDAO
+     */
+    public function getClientCoberturas($peticionDeCoberturasDAO) {
+        return $peticionDeCoberturasDAO->getByValues([
+            PeticionDeCoberturaColumns::CLIENTE_ID => $this->getId(),
+            PeticionDeCoberturaColumns::APROBADA => true
+        ]);
     }
 
     public function getId() {
@@ -144,13 +151,13 @@ class Cliente implements IUser{
 
     public function getVariablesAsMap() {
         $map = array(
-            "id" => $this->id,
-            "nombre" => $this->nombre,
-            "apellido" => $this->apellido,
-            "dni" => $this->dni,
-            "direccion" => $this->direccion,
-            "productor_id" => $this->productorId,
-            "user_id" => $this->user->getId()
+            ClientColumns::ID => $this->id,
+            ClientColumns::NOMBRE => $this->nombre,
+            ClientColumns::APELLIDO => $this->apellido,
+            ClientColumns::DNI => $this->dni,
+            ClientColumns::DIRECCION => $this->direccion,
+            ClientColumns::PRODUCTOR_ID => $this->productorId,
+            ClientColumns::USER_ID => $this->user->getId()
         );
         return $map;
     }

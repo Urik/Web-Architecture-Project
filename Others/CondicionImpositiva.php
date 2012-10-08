@@ -4,7 +4,8 @@ class CondicionImpositiva extends Thing {
     private $name = "";
     private $description = "";
     
-    function __construct($name, $description) {
+    function __construct($id, $name, $description) {
+        $this->setId($id);
         $this->name = $name;
         $this->description = $description;
     }
@@ -23,6 +24,14 @@ class CondicionImpositiva extends Thing {
 
     public function setDescription($description) {
         $this->description = $description;
+    }
+    
+    public function getVariablesAsMap() {
+        $map = array(
+            CondicionImpositivaColumns::NAME => $this->name,
+            CondicionImpositivaColumns::DESCRIPTION => $this->description
+        );
+        return $map;
     }
 }
 

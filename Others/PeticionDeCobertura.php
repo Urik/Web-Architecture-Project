@@ -25,7 +25,8 @@ class PeticionDeCobertura extends Thing {
     /** @var DateTime */
     private $fecha;
 
-    function __construct($cliente, $modelo, $sumaAsegurada, $datos, $aprobada, $cobertura, $disminucionDeComision, $fecha) {
+    function __construct($id, $cliente, $modelo, $sumaAsegurada, $datos, $aprobada, $cobertura, $disminucionDeComision, $fecha) {
+        $this->setId($id);
         $this->cliente = $cliente;
         $this->modelo = $modelo;
         $this->sumaAsegurada = $sumaAsegurada;
@@ -36,6 +37,14 @@ class PeticionDeCobertura extends Thing {
         $this->fecha = $fecha;
     }
 
+    public function getCosto() {
+        $rc = $this->getCobertura()->getCompania()->getRC();
+        $taza = $this->getCobertura()->getTaza();
+        $sit = $this->getCobertura()->getCompania()->getImpuesto($this->getCobertura()->getCondicionImpositiva());
+        $costo = ($this->sumaAsegurada * $taza / 100 + $rc) * ((100 - $this->disminucionDeComision) / 100) * ((100 + $sit) / 100 );
+        return $costo;
+    }
+    
     public function getCliente() {
         return $this->cliente;
     }

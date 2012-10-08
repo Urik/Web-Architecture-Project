@@ -5,12 +5,14 @@ class Cobertura extends Thing {
     private $descripcion = "";
     private $taza = 000.00;
     private $compania = null;
+    private $condicionImpositiva;
 
-    public function __construct($id, $descripcion, $taza, $compania) {
+    public function __construct($id, $descripcion, $taza, $compania, $condicionImpositiva) {
         $this->setId($id);
         $this->descripcion = $descripcion;
         $this->taza = $taza;
         $this->compania = $compania;
+        $this->condicionImpositiva = $condicionImpositiva;
     }
 
     /**
@@ -46,7 +48,16 @@ class Cobertura extends Thing {
     public function setCompania($compania) {
         $this->compania = $compania;
     }
+    
+    public function getCondicionImpositiva() {
+        return $this->condicionImpositiva;
+    }
 
+    public function setCondicionImpositiva($condicionImpositiva) {
+        $this->condicionImpositiva = $condicionImpositiva;
+    }
+
+    
     public function getVariablesAsMap() {
         $map = array(
             "id" => $this->getId(),

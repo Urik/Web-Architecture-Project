@@ -44,8 +44,17 @@ class Producer implements IUser {
      * @param type $productorId
      * @param ClientDAO $clientDAO
      */
-    public function createClient($clientVariables, $clientDAO) {
-        $clientDAO->create($clientVariables);
+    public function createClient($clientVariables) {
+        $clientDAO = new ClientDAO();
+        return $clientDAO->create($clientVariables);
+    }
+    
+    public function updateClient($client) {
+        return (new ClientDAO())->update($client);
+    }
+    
+    public function deleteClient($client) {
+        return (new ClientDAO())->delete($client);
     }
     
     /**

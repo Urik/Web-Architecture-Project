@@ -36,8 +36,14 @@ class CoberturaDAO extends DAO {
         $connection = (new DBConnection())->connect();
         $rows = $this->performQuery($this->tableName, $properties, $connection);
         $coberturas = array();
+        $condicionDAO = new CondicionImpositivaDAO();
         foreach ($rows as $row) {
-            $cobertura = new Cobertura($row["id"], $row["descripcion"], $row["taza"]);
+            $condicion = $condicionDAO->get(CoberturaColumns::CONDICIONES_IMPOSITIVAS_ID);
+            $cobertura = new Cobertura($row[CoberturaColumns::ID], 
+                    $row[CoberturaColumns::DESCRIPCION], 
+                    $row[CoberturaColumns::TASA],
+                    $row[CoberturaColumns::COMPANIA_ID],
+                    $condicion);
             $coberturas[] = $cobertura;
         }
         return $coberturas;

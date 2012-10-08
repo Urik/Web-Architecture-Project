@@ -26,7 +26,7 @@ abstract class DAO {
     public abstract function delete($object);
 
     /**
-     * 
+     * Returns an array of rows that contain the records of the query.
      * @param type $table The name of the table for the query.
      * @param type $values A map of the form columnName => value
      * @param type $connection The DB connection

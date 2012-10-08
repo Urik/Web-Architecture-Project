@@ -4,7 +4,6 @@ class PeticionDeCoberturaDAO extends DAO {
     private $tableName = "peticiones_de_cobertura";
     
     public function create($variables) {
-        //TODO Crear columna para el costo del seguro, y calcularlo.
         $connection = (new DBConnection())->connect();
         return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
     }
@@ -38,6 +37,7 @@ class PeticionDeCoberturaDAO extends DAO {
             $cobertura = (new CoberturaDAO())->get($row[PeticionDeCoberturaColumns::COBERTURA_ID]);
             $fecha = new DateTime($row[PeticionDeCoberturaColumns::FECHA]);
             $peticion = new PeticionDeCobertura(
+                    $row[PeticionDeCoberturaColumns::ID],
                     $cliente,
                     $row[PeticionDeCoberturaColumns::MODELO], 
                     $row[PeticionDeCoberturaColumns::SUMA_ASEGURADA], 

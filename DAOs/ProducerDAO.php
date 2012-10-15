@@ -36,9 +36,9 @@ class ProducerDAO extends DAO{
         return $producer;            
     }
 
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $rows = $this->performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $producers = array();
         foreach($rows as $row) {
             $user = (new UserDAO())->get($row["user_id"]);

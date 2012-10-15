@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Others/IUser.php';
+
 class Administrator implements IUser {
     private $id;
     /** @var User */
@@ -19,7 +21,7 @@ class Administrator implements IUser {
     }
 
     public function getId() {
-        $this->id;
+        return $this->id;
     }
 
     public function getNick() {

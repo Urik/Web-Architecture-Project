@@ -1,6 +1,6 @@
 <?php
 
-require_once "Others/Cliente.php";
+require_once "/Others/Cliente.php";
 
 class ClientDAO extends DAO {
 
@@ -22,9 +22,9 @@ class ClientDAO extends DAO {
         return count($clients) > 0 ? $clients[0] : null;
     }
 
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $rows = $this->performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $clients = array();
         foreach ($rows as $row) {
             $user = (new UserDAO())->get($row["user_id"]);

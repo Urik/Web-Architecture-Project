@@ -18,7 +18,7 @@ class CoberturaDAO extends DAO {
      * @param Cobertura $object
      */
     public function delete($object) {
-        (new DAOCommonImpl())->delete($object->getId(), $this->tableName);
+        return (new DAOCommonImpl())->delete($object->getId(), $this->tableName);
     }
     public function get($id) {
         $properties = array(
@@ -32,9 +32,9 @@ class CoberturaDAO extends DAO {
         }
     }
 
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $rows = $this->performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $coberturas = array();
         $condicionDAO = new CondicionImpositivaDAO();
         foreach ($rows as $row) {

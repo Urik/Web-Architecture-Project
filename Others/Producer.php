@@ -139,7 +139,7 @@ class Producer implements IUser {
     }
 
     public function getEmail() {
-        return $this->email;
+        return $this->user->getEmail();
     }
 
     public function getTelefono_1() {

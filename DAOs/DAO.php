@@ -8,8 +8,11 @@ abstract class DAO {
      * $properties should be an array of type ["field" => "value"]
      * Returns an array of the objects that satisfy certain property.
      */
-    public abstract function getByValues($properties);
+    public function getByValues($properties) {
+        return $this->getByValuesWithLimit($properties, null, null);
+    }
 
+    public abstract function getByValuesWithLimit($properties, $limit, $offset);
     /**
      * Gets an object by its ID.
      */
@@ -32,7 +35,7 @@ abstract class DAO {
      * @param type $connection The DB connection
      * @return type An array containing arrays that represent each row.
      */
-    public function performQuery($table, $values, $connection) {
+    public function performQuery($table, $values, $connection, $limit, $limitOffset) {
         $query = "SELECT * 
             FROM $table 
         WHERE ";
@@ -41,6 +44,9 @@ abstract class DAO {
         }
         //Deletes the last AND from the query
         $query = substr($query, 0, strrpos($query, "AND"));
+        if (!is_null($limit)) {
+            $query .= ' LIMIT ' . $limitOffset . ',' . $limit;
+        }
         $result = mysql_query($query, $connection) or die(mysql_error());
         $rows = array();
 

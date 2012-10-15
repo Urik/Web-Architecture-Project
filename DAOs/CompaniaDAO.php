@@ -1,5 +1,4 @@
 <?php
-//TODO Implementar paginacion para todos los DAO's
 
 class CompaniaDAO extends DAO {
     //TODO Test the shit out of this DAO.
@@ -28,9 +27,9 @@ class CompaniaDAO extends DAO {
         return $compania;
     }
 
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $companiasRows = $this->performQuery($this->tableName, $properties, $connection);
+        $companiasRows = $this->performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $companias = array();
         foreach ($companiasRows as $row) {
             $user = (new UserDAO())->get($row[CompaniaColumns::USER_ID]);

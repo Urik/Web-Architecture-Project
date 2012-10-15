@@ -28,9 +28,9 @@ class PeticionDeCoberturaDAO extends DAO {
      * @param type $properties
      * @return PeticionDeCobertura[]
      */
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $rows = $this->performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $peticiones = array();
         foreach ($rows as $row) {
             $cliente = (new ClientDAO())->get($row[PeticionDeCoberturaColumns::CLIENTE_ID]);

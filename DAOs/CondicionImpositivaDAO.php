@@ -23,9 +23,9 @@ class CondicionImpositivaDAO extends DAO {
         return $condicion;
     }
 
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $rows = $this->performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $condiciones = array();
         foreach ($rows as $row) {
             $condicion = new CondicionImpositiva(

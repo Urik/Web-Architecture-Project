@@ -1,7 +1,5 @@
 <?php
 
-require_once "Others/Administrator.php";
-
 class AdministratorDAO extends DAO {
     private $tableName = "";
     
@@ -25,9 +23,9 @@ class AdministratorDAO extends DAO {
        }
     }
 
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $limitOffset) {
         $connection = (new DBConnection())->connect();
-        $rows = $this->performQuery($this->tableName, $properties, $connection);
+        $rows = $this->performQuery($this->tableName, $properties, $connection, $limit, $limitOffset);
         $administrators = array();
         foreach ($rows as $row) {
             $user = (new UserDAO())->get($row["user_id"]);

@@ -21,9 +21,9 @@ require_once "Controllers/HomePageController.php";
 class HomePageFactory {
     
     /**
-     * 
-     * @param User $user
-     * @return HomePageView
+     * Obtiene el controlador para la homepage de un usuario correspondiente.
+     * @param User $user El usuario para el que se busca su home page.
+     * @return HomePageController Un controlador de Home Page.
      */
     public function getController($user) {
         $view = $this->getView($user);
@@ -33,7 +33,12 @@ class HomePageFactory {
             return new HomePageController($view, new HomePageModel());
         }
     }
-    
+
+    /**
+     * Obtiene para un usuario su vista de Home Page.
+     * @param $user
+     * @return AdministratorHomePageView|ClienteHomePageView|CompaniaHomePageView|null|ProducerHomePageView
+     */
     public function getView($user) {
         $view = null;
         if ($user instanceof Cliente) {

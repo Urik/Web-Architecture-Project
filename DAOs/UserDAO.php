@@ -17,7 +17,7 @@ class UserDAO extends DAO {
         $parameters = array(
             "id" => $id
         );
-        $rows = parent::performQuery($this->tableName, $parameters, $connection);
+        $rows = parent::performQuery($this->tableName, $parameters, $connection, null, null);
         $user = null;
         if(count($rows) > 0) {
             $row = $rows[0];
@@ -30,9 +30,9 @@ class UserDAO extends DAO {
      * Returns an array of User conatining all the users matching certain criteria.
      * @param type $properties An array of the form "columnName => value".
      */
-    public function getByValues($properties) {
+    public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();
-        $userRows = parent::performQuery($this->tableName, $properties, $connection);
+        $userRows = parent::performQuery($this->tableName, $properties, $connection, $limit, $offset);
         $users = array();
         foreach ($userRows as $row) {
             $user = new User(

@@ -23,7 +23,9 @@ class IndexController {
      */
     public function start() {
         if (!empty($_POST['email'])) {
-            session_start();
+            if (!isset($_SESSION)) {
+                session_start();
+            }
             $login = new LoginController();
 
             /* @var User */
@@ -37,9 +39,5 @@ class IndexController {
             $this->view->showIndex();
         }
     }
-    
-    
-
 }
-
 ?>

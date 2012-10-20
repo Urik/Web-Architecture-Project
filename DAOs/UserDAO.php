@@ -29,6 +29,7 @@ class UserDAO extends DAO {
     /**
      * Returns an array of User conatining all the users matching certain criteria.
      * @param type $properties An array of the form "columnName => value".
+     * @return User[]
      */
     public function getByValuesWithLimit($properties, $limit, $offset) {
         $connection = (new DBConnection())->connect();

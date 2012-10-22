@@ -2,10 +2,18 @@
 
 class PeticionDeCoberturaDAO extends DAO {
     private $tableName = "peticiones_de_cobertura";
-    
+
+    /**
+     * @param $variables
+     * @throws PeticionDeCoberturaCreationException
+     */
     public function create($variables) {
         $connection = (new DBConnection())->connect();
-        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        try {
+            (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        } catch (DBErrorException $e) {
+            throw new PeticionDeCoberturaCreationException('Can\'t create ' . $variables);
+        }
     }
 
     /**

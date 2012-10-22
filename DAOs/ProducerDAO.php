@@ -58,10 +58,18 @@ class ProducerDAO extends DAO{
         return (new DAOCommonImpl())->update($variables, $this->tableName ) &&
             (new UserDAO())->update($object->getUser());
     }
-    
+
+    /**
+     * @param $variables
+     * @throws ProducerCreationException
+     */
     public function create($variables) {
         $connection = (new DBConnection())->connect();
-        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        try {
+            (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        } catch (DBErrorException $e) {
+            throw new ProducerCreationException('Error creating ' . $variables);
+        }
     }
     
 }

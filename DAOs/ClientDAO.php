@@ -61,9 +61,19 @@ class ClientDAO extends DAO {
         return (new DAOCommonImpl())->update($object->getVariablesAsMap(), $this->tableName);
     }
 
+    /**
+     * @param $variables
+     * @return bool
+     * @throws ClientCreationException
+     */
     public function create($variables) {
         $connection = (new DBConnection())->connect();
-        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        try {
+            (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        } catch (DBErrorException $e) {
+            throw new ClientCreationException('Error creating ' . $variables);
+        }
+
     }
 }
 

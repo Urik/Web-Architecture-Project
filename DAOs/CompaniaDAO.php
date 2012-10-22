@@ -3,10 +3,18 @@
 class CompaniaDAO extends DAO {
     //TODO Test the shit out of this DAO.
     private $tableName = "companias";
-    
+
+    /**
+     * @param $variables
+     * @throws CompaniaCreationException
+     */
     public function create($variables) {
         $connection = (new DBConnection())->connect();
-        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        try {
+            (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        } catch (DBErrorException $e) {
+            throw new CompaniaCreationException(' Can\'t create ' . $variables);
+        }
     }
 
     public function delete($object) {

@@ -9,7 +9,11 @@ class UserCreator {
             UserColumns::BIRTH_DATE => $birthday,
             UserColumns::USER_TYPE => $userType
         );
-        return (new UserDAO())->create($variables);
+        try {
+            (new UserDAO())->create($variables);
+        } catch (UserCreationException $e ) {
+            throw $e;
+        }
     }
 }
 

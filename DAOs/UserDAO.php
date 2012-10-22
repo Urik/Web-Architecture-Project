@@ -66,10 +66,18 @@ class UserDAO extends DAO {
         $variables = $object->getVariablesAsMap();
         return (new DAOCommonImpl())->update($variables, $this->tableName);
     }
-    
+
+    /**
+     * @param $variables
+     * @throws UserCreationException
+     */
     public function create($variables) {
         $connection = (new DBConnection())->connect();
-        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        try {
+            (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        } catch(DBErrorException $e) {
+            throw new UserCreationException('Error creating ' . $variables);
+        }
     }
 }
 

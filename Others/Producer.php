@@ -43,10 +43,15 @@ class Producer implements IUser {
      * @param type $userId
      * @param type $productorId
      * @param ClientDAO $clientDAO
+     * @throws ProducerCreationException
      */
     public function createClient($clientVariables) {
         $clientDAO = new ClientDAO();
-        return $clientDAO->create($clientVariables);
+        try {
+            $clientDAO->create($clientVariables);
+        } catch (DBErrorException $e) {
+            throw new ProducerCreationException("Error creating Producer",0, $e);
+        }
     }
     
     public function updateClient($client) {

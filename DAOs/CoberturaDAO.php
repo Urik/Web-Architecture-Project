@@ -55,10 +55,18 @@ class CoberturaDAO extends DAO {
     public function update($object) {
         return (new DAOCommonImpl())->update($object->getVariablesAsMap(), $this->tableName);
     }
-    
+
+    /**
+     * @param $variables
+     * @throws CoberturaCreationException
+     */
     public function create($variables) {
         $connection = (new DBConnection())->connect();
-        return (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        try {
+            (new DAOCommonImpl())->create($variables, $this->tableName, $connection);
+        } catch (DBErrorException $e) {
+            throw new CoberturaCreationException('Can\'t create '.$variables);
+        }
     }
 }
 

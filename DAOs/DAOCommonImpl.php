@@ -28,6 +28,14 @@ class DAOCommonImpl {
         return $success;
     }
 
+
+    /**
+     * @param $variables
+     * @param $tableName
+     * @param $connection
+     * @return bool
+     * @throws DBErrorException
+     */
     public function create($variables, $tableName, $connection) {
         if (count($variables) == 0) {
             return false;
@@ -42,7 +50,10 @@ class DAOCommonImpl {
             $columns = substr($columns, 0, strrpos($columns, ", "));
             $values = substr($values, 0, strrpos($values, ", "));
             $sql .= '(' . $columns . ') VALUES (' . $values . ')';
-            return mysql_query($sql, $connection);
+            $success = mysql_query($sql, $connection);
+            if ($success == false) {
+                throw new DBErrorException('Error saving ' . $variables . ' to ' . $tableName);
+            }
         }
     }
 

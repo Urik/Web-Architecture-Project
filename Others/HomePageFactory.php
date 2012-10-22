@@ -30,7 +30,9 @@ class HomePageFactory {
         if (is_null($view)) {
             return null;
         } else {
-            return new HomePageController($view, new HomePageModel());
+            $controller = new HomePageController($view, new HomePageModel());
+            $view->setController($controller);
+            return $controller;
         }
     }
 
@@ -42,13 +44,13 @@ class HomePageFactory {
     public function getView($user) {
         $view = null;
         if ($user instanceof Cliente) {
-            $view = new ClienteHomePageView($this);
+            $view = new ClienteHomePageView();
         } elseif ($user instanceof Producer) {
-            $view = new ProducerHomePageView($this);
+            $view = new ProducerHomePageView();
         } elseif ($user instanceof Compania) {
-            $view = new CompaniaHomePageView($this);
+            $view = new CompaniaHomePageView();
         } else {
-            $view = new AdministratorHomePageView($this);
+            $view = new AdministratorHomePageView();
         }
         return $view;
     }

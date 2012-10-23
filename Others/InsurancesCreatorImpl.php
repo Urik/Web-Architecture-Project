@@ -7,15 +7,15 @@ class InsurancesCreatorImpl implements IInsurancesCreator {
             "tasa" => $taza,
             "compania_id" => $this->id
         );
-        return (new CoberturaDAO())->create($fields);
+        return (new InsuranceDAO())->create($fields);
 	}
 	
 	public function updateInsurance($object) {
-		return (new CoberturaDAO())->update($cobertura);
+		return (new InsuranceDAO())->update($cobertura);
 	}
 	
 	public function deleteInsurance($object) {
-		return (new CoberturaDAO())->delete($cobertura);
+		return (new InsuranceDAO())->delete($cobertura);
 	}
 }
 

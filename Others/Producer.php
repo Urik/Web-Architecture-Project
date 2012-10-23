@@ -2,7 +2,7 @@
 
 require_once "Others/IUser.php";
 
-class Producer implements IUser {
+class Producer implements IUser, IClientsCreator {
 
     private $DNI;
     private $nombre;
@@ -12,6 +12,9 @@ class Producer implements IUser {
     private $telefono_2;
     /** @var User */
     private $user;
+
+    /** @var ClientsCreatorImpl */
+    private $clientsCreator;
     
     /**
      * Should only be used by DAO's
@@ -31,6 +34,7 @@ class Producer implements IUser {
         $this->telefono_1 = $telefono_1;
         $this->telefono_2 = $telefono_2;
         $this->user = $user;
+        $this->clientsCreator = new ClientsCreatorImpl();
     }
     
 
@@ -46,20 +50,19 @@ class Producer implements IUser {
      * @throws ProducerCreationException
      */
     public function createClient($clientVariables) {
-        $clientDAO = new ClientDAO();
-        try {
-            $clientDAO->create($clientVariables);
-        } catch (DBErrorException $e) {
-            throw new ProducerCreationException("Error creating Producer",0, $e);
+        try{
+            $this->clientsCreator->createClient($clientVariables);
+        } catch (ClientCreationException $e) {
+            echo $e->getTraceAsString();
         }
     }
     
     public function updateClient($client) {
-        return (new ClientDAO())->update($client);
+        $this->clientsCreator->updateClient($client);
     }
     
     public function deleteClient($client) {
-        return (new ClientDAO())->delete($client);
+        $this->clientsCreator->deleteClient($client);
     }
     
     /**

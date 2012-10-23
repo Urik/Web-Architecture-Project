@@ -1,5 +1,5 @@
 <?php
-require_once 'interfaces/ICreator.php'
+require_once 'Interfaces/ICreator.php';
 
 interface IClientsCreator {
 	public function createClient($variables);

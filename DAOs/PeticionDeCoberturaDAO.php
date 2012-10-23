@@ -42,7 +42,7 @@ class PeticionDeCoberturaDAO extends DAO {
         $peticiones = array();
         foreach ($rows as $row) {
             $cliente = (new ClientDAO())->get($row[PeticionDeCoberturaColumns::CLIENTE_ID]);
-            $cobertura = (new CoberturaDAO())->get($row[PeticionDeCoberturaColumns::COBERTURA_ID]);
+            $cobertura = (new InsuranceDAO())->get($row[PeticionDeCoberturaColumns::COBERTURA_ID]);
             $fecha = new DateTime($row[PeticionDeCoberturaColumns::FECHA]);
             $peticion = new PeticionDeCobertura(
                     $row[PeticionDeCoberturaColumns::ID],

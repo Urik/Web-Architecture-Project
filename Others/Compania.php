@@ -26,7 +26,7 @@ class Compania implements IUser
     }
     
     public function getCoberturas($cobertura) {
-        return (new CoberturaDAO())->getByValues([CoberturaColumns::COMPANIA_ID => $this->getId()]);
+        return (new InsuranceDAO())->getByValues([CoberturaColumns::COMPANIA_ID => $this->getId()]);
     }
     
     public function getImpuesto($condicionImpositiva) {
@@ -43,15 +43,15 @@ class Compania implements IUser
             "tasa" => $taza,
             "compania_id" => $this->id
         );
-        return (new CoberturaDAO())->create($fields);
+        return (new InsuranceDAO())->create($fields);
     }
     
     public function updateCobertura($cobertura) {
-        return (new CoberturaDAO())->update($cobertura);
+        return (new InsuranceDAO())->update($cobertura);
     }
     
     public function deleteCobertura($cobertura) {
-        return (new CoberturaDAO())->delete($cobertura);
+        return (new InsuranceDAO())->delete($cobertura);
     }
 
     public function setEmail($email){

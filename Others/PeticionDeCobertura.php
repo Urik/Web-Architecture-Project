@@ -18,7 +18,7 @@ class PeticionDeCobertura extends Thing {
     private $datos = "";
     private $aprobada = false;
 
-    /** @var Cobertura */
+    /** @var Insurance */
     private $cobertura;
     private $disminucionDeComision = 000.00;
 

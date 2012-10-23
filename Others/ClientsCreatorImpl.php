@@ -1,19 +1,24 @@
 <?php
 
 class ClientsCreatorImpl implements IClientsCreator {
-	public function createClient($variables) {
+
+    /**
+     * @param $variables
+     * @throws ProducerCreationException
+     */
+    public function createClient($variables) {
 	$clientDAO = new ClientDAO();
         try {
-            $clientDAO->create($clientVariables);
+            $clientDAO->create($variables);
         } catch (DBErrorException $e) {
             throw new ProducerCreationException("Error creating Producer",0, $e);
         }
 	}
 	public function updateClient($object) {
-        return (new ClientDAO())->update($client);
+        return (new ClientDAO())->update($object);
 	}
 	public function deleteClient($object) {
-        return (new ClientDAO())->delete($client);
+        return (new ClientDAO())->delete($object);
 	}
 }
 

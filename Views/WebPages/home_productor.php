@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Home Productor</title>
 <link type="text/css" rel="stylesheet" href="../../css/reset.css" />
+<link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" />
 </head>
 
 <body>

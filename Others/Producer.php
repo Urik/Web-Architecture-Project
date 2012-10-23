@@ -1,6 +1,8 @@
 <?php
 
 require_once "Others/IUser.php";
+require_once "Interfaces/IClientsCreator.php";
+require_once "Others/ClientsCreatorImpl.php";
 
 class Producer implements IUser, IClientsCreator {
 

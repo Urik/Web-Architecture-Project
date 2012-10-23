@@ -45,11 +45,11 @@ class Cliente implements IUser{
     }
 
     public function getId() {
-        return $this->$id;
+        return $this->id;
     }
     
     public function setId($adminId) {
-        $this->$id = $adminId;
+        $this->id = $adminId;
     }
 
     public function getNombre() {

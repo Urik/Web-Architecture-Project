@@ -19,7 +19,6 @@
     <div class="hero-unit" id="hero">
         <h1>Agencia de seguros</h1>
         <h2>Fuiste alpiste</h2>
-        <h3>Tu desdicha es nuestra riqueza!</h3>
     </div>
 
     <form action="../../../index.php" method="POST" name="login_form" id="login_form">

@@ -14,23 +14,42 @@ if(!isset($_SESSION)) {
 }
 //$parameters = $_SESSION["parameters"];
 $usertype = $_SESSION["user_Type_Actual"];
-switch ($usertype){
-	case "1": 
-		header('Location: home_admin.php');
-		break;
-	case "2":
-		header('Location: home_compania.php');
-		break;
-	case "":
-		header('Location: Index.php');
-		break;
-		}
 ?>
+<div class="container">
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="#">CAECE</a>
+        <ul class="nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="productor/alta_tomador.php">Alta</a></li>
+                    <li><a>Baja</a></li>
+                    <li><a>Modificacion</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Coberturas<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a>Solicitar</a></li>
+                    <li><a>Anular</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav pull-right">
+            <li><a class="pull-right" href="logout.php">Log Out</a></li>
+        </ul>
+    </div>
+</div>
+</div>
 <div style="width:940px; height:40px; text-align:right; margin:auto; background:#0C6; padding-top:20px;"><?php $useremail = ""/*$parameters["user_Actual"]*/; print("<span style='padding-right:20px'>".$useremail."</span>"); ?><a href="logout.php">Log Out</a></div>
 <h1>Home Productor</h1>
     <a href="productor/alta_tomador.php">Alta Tomador</a><br>
     <a href="productor/modif_tomador.php">Baja/Modificacion Tomador</a><br>
     <a href="productor/alta_solicitud.php">Solicitar Cobertura</a><br>
     <a href="productor/modif_solicitud.php">Anular Cobertura Solicitada</a><br>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 </body>
 </html>

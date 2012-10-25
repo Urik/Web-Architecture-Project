@@ -1,6 +1,6 @@
 #login_form {
     margin: 0 auto;
-    width: 700px;
+
 }
 
 #hero {
@@ -9,4 +9,8 @@
     padding-bottom: 30px;
     text-align: center;
     background-color: #dff0d8;
+}
+
+#quote {
+    margin-top: 30px;
 }

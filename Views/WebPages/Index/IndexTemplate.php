@@ -3,10 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Login</title>
-    <script src="Resources/jquery.js" type="text/javascript"></script>
-    <script src="Resources/jquery.validate.js" type="text/javascript"></script>
     <link type="text/css" rel="stylesheet" href="../../../css/login.css" />
     <link type="text/css" rel="stylesheet" href="../../../css/bootstrap.min.css" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="../../../js/jquery.cycle.all.js"></script>
+    <script type="text/javascript">
+        $('#quote').cycle({ timeout: 4000, cleartype: 1, speed: 1000 });
+    </script>
 </head>
 
 <body>
@@ -16,7 +19,7 @@
     </div>
 </div>
 
-<div class="container" id="login_form">
+<div class="container">
     <div class="hero-unit" id="hero">
         <h1>Agencia de seguros</h1>
         <h2>Fuiste alpiste</h2>
@@ -40,14 +43,17 @@
     <div class="row">
         <div class="span1"></div>
         <div class="span10" id="quote">
-            <h1>Seguros? Por favor, un hombre de verdad toma riesgos.<br /> <small>Capitan del Titanic.</small></h1>
+            <h1>Seguros? Por favor, un hombre de verdad toma riesgos.<br /> <small>Edward Smith, capitan del Titanic.</small></h1>
+            <h1>No, gracias, no necesito un seguro de vida.<br /> <small>Romina Yan.</small></h1>
+            <h1>Que venenosos ni venenosos, estos hongos son de los buenos. <br /> <small>Dealer de la esquina.</small></h1>
+            <h1>Eh amigo, linda camara. <br /> <small>Amigo del dealer de la esquina.</small></h1>
         </div>
         <div class="span1"></div>
     </div>
 </div>
 </body>
 <script type="text/javascript">
-    $().ready(function() {
+    $(document).ready(function() {/*
         $("#login_form").validate({
             messages:{
                 email:{
@@ -58,10 +64,9 @@
                     required: "campo requerido."
                 }
             }
-        });
+        });*/
+
+
     });
 </script>
-
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </html>

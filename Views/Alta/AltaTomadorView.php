@@ -12,7 +12,7 @@ class AltaTomadorView
         $this->controller = $controller;
     }
 
-    public function showRegistrationForm() {
+    public function showRegistrationPage() {
         //TODO make form.
     }
 

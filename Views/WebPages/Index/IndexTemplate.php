@@ -43,10 +43,11 @@
     <div class="row">
         <div class="span1"></div>
         <div class="span10" id="quote">
-            <h1>Seguros? Por favor, un hombre de verdad toma riesgos.<br /> <small>Edward Smith, capitan del Titanic.</small></h1>
+            <h1>¿Seguros? Por favor, un hombre de verdad toma riesgos.<br /> <small>Edward Smith, capitan del Titanic.</small></h1>
             <h1>No, gracias, no necesito un seguro de vida.<br /> <small>Romina Yan.</small></h1>
             <h1>Que venenosos ni venenosos, estos hongos son de los buenos. <br /> <small>Dealer de la esquina.</small></h1>
-            <h1>Eh amigo, linda camara. <br /> <small>Amigo del dealer de la esquina.</small></h1>
+            <h1>Eh amigo, linda camara. <br /> <small>Punga de la esquina.</small></h1>
+            <h1>Homero, necesito un favor. <br /> <small>Moe</small></h1>
         </div>
         <div class="span1"></div>
     </div>

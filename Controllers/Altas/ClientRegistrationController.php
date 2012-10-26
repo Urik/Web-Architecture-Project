@@ -1,6 +1,5 @@
 <?php
-require_once 'Views/Alta/ClientRegistrationController.php';
-require_once 'Others/Producer.php';
+require_once "Views/Alta/AltaTomadorView.php";
 
 if (!isset($_SESSION)) {
     session_start();
@@ -8,7 +7,7 @@ if (!isset($_SESSION)) {
 
 class AltaTomadorController
 {
-    /** @var Producer */
+    /** @var IClientsCreator */
     private $model;
     /** @var AltaTomadorView */
     private $view;
@@ -20,8 +19,9 @@ class AltaTomadorController
 
     public function start() {
         if (!isset($_POST)) {
-            $this->view->showRegistrationForm();
+            $this->view->showRegistrationPage();
         } else {
+
             $success = createClient(new UserCreator(), new UserDAO());
             if ($success) {
                 $this->view->showSuccess();
@@ -32,13 +32,18 @@ class AltaTomadorController
         }
     }
 
-    public function createClient(UserCreator $userCreator, UserDAO $userDAO) {
+    private function createUser() {
+
+    }
+
+    public function createClient(UserCreator $userCreator, UserDAO $userDAO, $nick, $password, $email, $birthday,
+        $firstName, $lastName, $address, $dni, $telefono, $cuit, $telefonos) {
         try {
             $userData = [
-                UserColumns::NICK => $_POST["nick"],
-                UserColumns::PASSWORD => $_POST["password"],
-                UserColumns::EMAIL => $_POST["email"],
-                UserColumns::BIRTH_DATE => $_POST["birthday"],
+                UserColumns::NICK => $nick,
+                UserColumns::PASSWORD => $password,
+                UserColumns::EMAIL => $email,
+                UserColumns::BIRTH_DATE => $birthday,
                 UserColumns::USER_TYPE => UserTypes::CLIENT
             ];
             $userDAO->create($userData);
@@ -46,10 +51,10 @@ class AltaTomadorController
             $user = $userDAO->getByValues($userData);
 
             $clientData = [
-                ClientColumns::APELLIDO => $_POST["familyName"],
-                ClientColumns::DIRECCION => $_POST["address"],
-                ClientColumns::DNI => $_POST["dni"],
-                ClientColumns::NOMBRE => $_POST["name"],
+                ClientColumns::APELLIDO => $lastName,
+                ClientColumns::DIRECCION => $address,
+                ClientColumns::DNI => $dni,
+                ClientColumns::NOMBRE => $firstName,
                 ClientColumns::PRODUCTOR_ID => $this->model->getId(),
                 ClientColumns::USER_ID => $user[0]->getId()
             ];

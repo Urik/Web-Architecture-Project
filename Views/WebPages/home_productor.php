@@ -15,7 +15,6 @@ if(!isset($_SESSION)) {
 //$parameters = $_SESSION["parameters"];
 $usertype = $_SESSION["user_Type_Actual"];
 ?>
-<div class="container">
 <div class="navbar">
     <div class="navbar-inner">
         <a class="brand" href="#">CAECE</a>
@@ -23,7 +22,7 @@ $usertype = $_SESSION["user_Type_Actual"];
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="productor/alta_tomador.php">Alta</a></li>
+                    <li><a href="productor/alta_cliente_template.php">Alta</a></li>
                     <li><a>Baja</a></li>
                     <li><a>Modificacion</a></li>
                 </ul>
@@ -41,10 +40,10 @@ $usertype = $_SESSION["user_Type_Actual"];
         </ul>
     </div>
 </div>
+<div class="container">
 </div>
-<div style="width:940px; height:40px; text-align:right; margin:auto; background:#0C6; padding-top:20px;"><?php $useremail = ""/*$parameters["user_Actual"]*/; print("<span style='padding-right:20px'>".$useremail."</span>"); ?><a href="logout.php">Log Out</a></div>
 <h1>Home Productor</h1>
-    <a href="productor/alta_tomador.php">Alta Tomador</a><br>
+    <a href="productor/alta_cliente_template.php">Alta Tomador</a><br>
     <a href="productor/modif_tomador.php">Baja/Modificacion Tomador</a><br>
     <a href="productor/alta_solicitud.php">Solicitar Cobertura</a><br>
     <a href="productor/modif_solicitud.php">Anular Cobertura Solicitada</a><br>

@@ -30,7 +30,7 @@ class IndexController {
 
             /* @var User */
             $user = $login->loguear($_POST['email'], $_POST['pass']);
-
+            $_SESSION["user"] = $user;
             if (!is_null($user)) {
                 $homePage = (new HomePageFactory())->getController($user);
                 $homePage->showHome([/*"user_Actual" => $user->getEmail()*/]);

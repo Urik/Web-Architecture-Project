@@ -80,6 +80,9 @@
 
                                     <label for="birth_date">Fecha de nacimiento</label>
                                     <input type="text" name="birth_date" id="birth_date" onkeypress="return false">
+
+                                    <label for="address">Direccion</label>
+                                    <input type="text" name="address" id="address">
                                 </div>
                                 <div class="span4">
                                     <label for="phone">Telefono</label>

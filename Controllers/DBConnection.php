@@ -1,9 +1,10 @@
 <?php
-require_once("Controllers/Conexion.php");
+require_once("Conexion.php");
 
 class DBConnection {
         public function connect() {
         $conexion = mysql_connect(constant("SERVER"), constant("DB_USER"), constant("DB_PASS"));
+        mysql_select_db(constant("DB_NAME"));
         return $conexion;
     }
     

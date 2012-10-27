@@ -40,10 +40,10 @@ abstract class DAO {
             FROM $table 
         WHERE ";
         foreach ($values as $name => $value) {
-            $query .= "$name = $value AND";
+            $query .= "$name = $value AND ";
         }
         //Deletes the last AND from the query
-        $query = substr($query, 0, strrpos($query, "AND"));
+        $query = substr($query, 0, strrpos($query, "AND "));
         if (!is_null($limit)) {
             $query .= ' LIMIT ' . $limitOffset . ',' . $limit;
         }

@@ -1,7 +1,7 @@
 <?php
 
 require_once "Thing.php";
-require_once("IUser.php");
+require_once "IUser.php";
 
 class User extends Thing implements IUser {
 
@@ -69,6 +69,4 @@ class User extends Thing implements IUser {
         return $variables;
     }
 }
-
-
 ?>

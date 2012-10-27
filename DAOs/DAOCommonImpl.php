@@ -1,5 +1,5 @@
 <?php
-
+require_once (dirname(__FILE__) . "/../Exceptions/DBErrorException.php");
 class DAOCommonImpl {
 
     public function update($parameters, $table) {
@@ -45,14 +45,20 @@ class DAOCommonImpl {
             $values = '';
             foreach ($variables as $key => $value) {
                 $columns .= $key . ', ';
-                $values .= $value . ', ';
+                if (is_numeric($value)) {
+                    $values .= $value . ', ';
+                } else {
+                    $values .= '"' . $value . '", ';
+                }
+
             }
             $columns = substr($columns, 0, strrpos($columns, ", "));
             $values = substr($values, 0, strrpos($values, ", "));
             $sql .= '(' . $columns . ') VALUES (' . $values . ')';
             $success = mysql_query($sql, $connection);
             if ($success == false) {
-                throw new DBErrorException('Error saving ' . $variables . ' to ' . $tableName);
+                echo mysql_error($connection);
+                throw new DBErrorException('Error saving ' . implode(", ", $variables) . ' to ' . $tableName);
             }
         }
     }

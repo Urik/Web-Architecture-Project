@@ -1,6 +1,8 @@
 <?php
 
-require_once "/Others/Cliente.php";
+require_once dirname(__FILE__) . "/../Others/Cliente.php";
+require_once dirname(__FILE__) . "/DAO.php";
+require_once dirname(__FILE__) . "/../Exceptions/ClientCreationException.php";
 
 class ClientDAO extends DAO {
 

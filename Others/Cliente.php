@@ -1,6 +1,6 @@
 <?php
 
-require_once "Others/IUser.php";
+require_once dirname(__FILE__) . "/IUser.php";
 
 class Cliente implements IUser{
     private $id;

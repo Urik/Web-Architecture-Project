@@ -9,7 +9,6 @@ class ClientColumns {
     const DIRECCION = "direccion";
     const USER_ID = "user_id";
     const PRODUCTOR_ID = "productor_id";
-
 }
 
 ?>

@@ -22,9 +22,9 @@ $usertype = $_SESSION["user_Type_Actual"];
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="productor/alta_cliente_template.php">Alta</a></li>
+                    <li><a href="../../Controllers/Altas/ClientRegistrationController.php">Alta</a></li>
                     <li><a>Baja</a></li>
-                    <li><a>Modificacion</a></li>
+                    <li><a href="../../Controllers/Modifications/ClientModificationController.php?clientId=3">Modificacion</a></li>
                 </ul>
             </li>
             <li class="dropdown">

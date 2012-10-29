@@ -13,11 +13,11 @@ class AltaTomadorView
     }
 
     public function showRegistrationPage() {
-        //TODO make form.
+        header("Location:  ../../Views/WebPages/productor/alta_cliente_template.php");
     }
 
     public function showSuccess() {
-        //TODO make success screen.
+
     }
 
     public function showError($message) {

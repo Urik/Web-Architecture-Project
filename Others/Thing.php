@@ -34,8 +34,6 @@ class Thing {
     public function setDAO($DAO) {
         $this->DAO = $DAO;
     }
-
-
 }
 
 ?>

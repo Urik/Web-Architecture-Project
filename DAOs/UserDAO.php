@@ -45,7 +45,7 @@ class UserDAO extends DAO
                 $row["nick"],
                 $row["password"],
                 $row["email"],
-                $row["birth_date"]);
+                new DateTime($row["birth_date"]));
             $user->setDAO($this);
             $users[] = $user;
 

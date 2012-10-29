@@ -1,8 +1,8 @@
 <?php
 
-require_once "Others/IUser.php";
-require_once "Interfaces/IClientsCreator.php";
-require_once "Others/ClientsCreatorImpl.php";
+require_once dirname(__FILE__) . "/IUser.php";
+require_once dirname(__FILE__) . "/../Interfaces/IClientsCreator.php";
+require_once dirname(__FILE__) . "/../Others/ClientsCreatorImpl.php";
 
 class Producer implements IUser, IClientsCreator {
 
@@ -28,7 +28,7 @@ class Producer implements IUser, IClientsCreator {
      * @param type $telefono_1
      * @param type $telefono_2
      */
-    public function __construct($DNI, $nombre, $apellido, $direccion, $telefono_1, $telefono_2, $user) {
+    public function __construct($DNI, $nombre, $apellido, $direccion, $telefono_1, $telefono_2, $user, IClientsCreator $clientsCreator = null) {
         $this->DNI = $DNI;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -36,7 +36,10 @@ class Producer implements IUser, IClientsCreator {
         $this->telefono_1 = $telefono_1;
         $this->telefono_2 = $telefono_2;
         $this->user = $user;
-        $this->clientsCreator = new ClientsCreatorImpl();
+        if (is_null($clientsCreator)) {
+            $clientsCreator = new ClientsCreatorImpl();
+        }
+        $this->clientsCreator = $clientsCreator;
     }
     
 

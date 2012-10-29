@@ -8,7 +8,7 @@ require_once 'InsurancesCreatorImpl.php';
 require_once 'ClientsCreatorImpl.php';
 require_once 'ProducersCreatorImpl.php';
 
-class Administrator implements IUser, IClientsCreator, IProducersCreator, IInsurancesCreator {
+class Administrator implements IUser, IProducersCreator, IInsurancesCreator {
     private $id;
     /** @var User */
     private $user;

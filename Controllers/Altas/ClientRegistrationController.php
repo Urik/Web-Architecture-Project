@@ -4,6 +4,9 @@ require_once "../../Others/UserCreator.php";
 require_once "../../DAOs/UserDAO.php";
 require_once "../../Others/UserColumns.php";
 require_once "../../Others/UserTypes.php";
+require_once dirname(__FILE__) . "/../../Others/Producer.php";
+require_once dirname(__FILE__) . "/../../Others/ClientColumns.php";
+require_once dirname(__FILE__) . "/../../Others/IUser.php";
 
 if (!isset($_SESSION)) {
     session_start();
@@ -22,7 +25,7 @@ class AltaTomadorController
     }
 
     public function start() {
-        if (!isset($_POST)) {
+        if (!isset($_POST) || empty($_POST)) {
             $this->view->showRegistrationPage();
         } else {
             $nick = $_POST["nick"];
@@ -48,12 +51,9 @@ class AltaTomadorController
         }
     }
 
-    private function createUser() {
-
-    }
-
     public function createClient(UserCreator $userCreator, UserDAO $userDAO, $nick, $password, $email, $birthday,
         $firstName, $lastName, $address, $dni, $telefono, $cuit) {
+        $success = true;
         try {
             $userData = [
                 UserColumns::NICK => $nick,
@@ -66,23 +66,30 @@ class AltaTomadorController
 
             $user = $userDAO->getByValues($userData);
 
+            $id = 0;
+            if ($this->model instanceof IUser) {
+                $id = $this->model->getId();
+            }
             $clientData = [
                 ClientColumns::APELLIDO => $lastName,
                 ClientColumns::DIRECCION => $address,
                 ClientColumns::DNI => $dni,
                 ClientColumns::NOMBRE => $firstName,
-                ClientColumns::PRODUCTOR_ID => $this->model->getId(),
+                ClientColumns::PRODUCTOR_ID => $id,
                 ClientColumns::USER_ID => $user[0]->getId()
             ];
             $this->model->createClient($clientData);
         } catch (ProducerCreationException $e) {
             $userDAO->delete($user);
+            $success = false;
         } catch (UserCreationException $e) {
+            $success = false;
         }
+        return $success;
     }
 }
 
-$model = $_SESSION["user"];
+$model = unserialize($_SESSION["user"]);
 $view = new AltaTomadorView();
 $controller = new AltaTomadorController($model, $view);
 $view->setController($controller);

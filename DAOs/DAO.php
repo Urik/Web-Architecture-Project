@@ -40,7 +40,11 @@ abstract class DAO {
             FROM $table 
         WHERE ";
         foreach ($values as $name => $value) {
-            $query .= "$name = $value AND ";
+            if(is_numeric($value)) {
+                $query .= "$name = $value AND ";
+            } else{
+                $query .= "$name = \"$value\" AND ";
+            }
         }
         //Deletes the last AND from the query
         $query = substr($query, 0, strrpos($query, "AND "));

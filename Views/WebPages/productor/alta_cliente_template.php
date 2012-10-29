@@ -101,11 +101,11 @@
                             </div>
                         </div>
                     </div>
-                <div class="row">
-                    <div class="span12">
-                        <input type="submit" class="btn">
+                    <div class="row">
+                        <div class="span12">
+                            <input type="submit" class="btn">
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </form>

@@ -11,7 +11,7 @@ class IndexView {
     }
     
     public function showIndex() {
-        header("Location: Views/WebPages/Index/IndexTemplate.php");
+        include dirname(__FILE__) . "/WebPages/Index/IndexTemplate.php";
     }
 }
 

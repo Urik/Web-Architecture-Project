@@ -24,17 +24,12 @@ class Producer implements IUser, IClientsCreator {
      * @param type $nombre
      * @param type $apellido
      * @param type $direccion
-     * @param type $email
-     * @param type $telefono_1
-     * @param type $telefono_2
      */
-    public function __construct($DNI, $nombre, $apellido, $direccion, $telefono_1, $telefono_2, $user, IClientsCreator $clientsCreator = null) {
+    public function __construct($DNI, $nombre, $apellido, $direccion, $user, IClientsCreator $clientsCreator = null) {
         $this->DNI = $DNI;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->direccion = $direccion;
-        $this->telefono_1 = $telefono_1;
-        $this->telefono_2 = $telefono_2;
         $this->user = $user;
         if (is_null($clientsCreator)) {
             $clientsCreator = new ClientsCreatorImpl();

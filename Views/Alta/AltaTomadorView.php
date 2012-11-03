@@ -13,7 +13,7 @@ class AltaTomadorView
     }
 
     public function showRegistrationPage() {
-        header("Location:  ../../Views/WebPages/productor/alta_cliente_template.php");
+        include dirname(__FILE__) . "/../../Views/WebPages/productor/alta_cliente_template.php";
     }
 
     public function showSuccess() {

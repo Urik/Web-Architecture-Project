@@ -7,7 +7,7 @@ class ProducerHomePageView extends HomePageView {
     public function showHome($parameters) {
         $_SESSION["parameters"] = $parameters;
         $_SESSION["model"] = $this->getController()->getModel();
-        header("Location:Views/WebPages/home_productor.php");
+        include dirname(__FILE__) . "/../WebPages/home_productor.php";
     }
 }
 

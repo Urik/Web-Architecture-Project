@@ -1,11 +1,11 @@
 <?php
 
 
-require_once "DAOs/UserDAO.php";
+require_once dirname(__FILE__) . "/UserDAO.php";
 
-require_once "Others/Producer.php";
+require_once dirname(__FILE__) . "/../Others/Producer.php";
 
-require_once "DAOs/DAO.php";
+require_once dirname(__FILE__) . "/DAO.php";
 
 class ProducerDAO extends DAO{
     private $tableName = "productores";

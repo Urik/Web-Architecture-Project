@@ -64,7 +64,8 @@ class AltaTomadorController
             ];
             $userDAO->create($userData);
 
-            $user = $userDAO->getByValues($userData);
+            $users = $userDAO->getByValues($userData);
+            $user = $users[0];
 
             $id = 0;
             if ($this->model instanceof IUser) {
@@ -76,7 +77,7 @@ class AltaTomadorController
                 ClientColumns::DNI => $dni,
                 ClientColumns::NOMBRE => $firstName,
                 ClientColumns::PRODUCTOR_ID => $id,
-                ClientColumns::USER_ID => $user[0]->getId()
+                ClientColumns::USER_ID => $user->getId()
             ];
             $this->model->createClient($clientData);
         } catch (ProducerCreationException $e) {

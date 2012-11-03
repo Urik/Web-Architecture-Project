@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__) . "/../DAOs/ClientDAO.php";
+require_once dirname(__FILE__) . "/../Exceptions/ProducerCreationException.php";
 
 class ClientsCreatorImpl implements IClientsCreator {
 

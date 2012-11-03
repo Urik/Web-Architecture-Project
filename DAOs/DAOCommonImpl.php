@@ -23,7 +23,7 @@ class DAOCommonImpl {
         $connection = (new DBConnection())->connect();
         $sql = 'DELETE FROM ' . $table .
                 'WHERE id = ' . $id;
-        $success = mysql_query($sql, $id);
+        $success = mysql_query($sql, $connection);
         mysql_close($connection);
         return $success;
     }

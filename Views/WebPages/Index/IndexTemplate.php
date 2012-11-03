@@ -3,10 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Login</title>
-    <link type="text/css" rel="stylesheet" href="../../../css/login.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/login.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../../../js/jquery.cycle.all.js"></script>
+    <script type="text/javascript" src="js/jquery.cycle.all.js"></script>
     <script type="text/javascript">
         $('#quote').cycle({ timeout: 4000, cleartype: 1, speed: 1000 });
     </script>
@@ -28,7 +28,7 @@
     <div class="row">
         <div class="span1"></div>
         <div class="span10">
-            <form action="../../../index.php" method="POST" name="login_form" class="form-inline" id="login_form">
+            <form action="index.php" method="POST" name="login_form" class="form-inline" id="login_form">
                 <legend>Log In</legend>
                 <label for="email">Email:</label>
                 <input name="email" id="email" type="text" class="required email" /><label for="email" class="error" generated="true"></label>

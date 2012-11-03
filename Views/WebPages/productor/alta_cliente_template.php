@@ -3,13 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Alta de Tomador</title>
-    <link type="text/css" rel="stylesheet" href="../../../css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/default.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/android.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/alta_cliente.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/default.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/android.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/alta_cliente.css" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../../js/glDatePicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/glDatePicker.min.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="productor/alta_cliente_template.php">Alta</a></li>
+                        <li><a href="Views/WebPages/productor/alta_cliente_template.php">Alta</a></li>
                         <li><a>Baja</a></li>
                         <li><a>Modificacion</a></li>
                     </ul>
@@ -50,7 +50,7 @@
                 <h3>Alta de cliente</h3>
             </div>
         </div>
-        <form method="post" action="../../../Controllers/Altas/ClientRegistrationController.php">
+        <form method="post" action="../../Controllers/Altas/ClientRegistrationController.php">
             <div class="row">
                 <div class="span12"">
                     <div class="row">
@@ -90,6 +90,9 @@
 
                                     <label for="cuit">CUIT</label>
                                     <input type="text" name="cuit" id="cuit">
+
+                                    <label for="dni">DNI</label>
+                                    <input type="text" name="dni" id="dni">
 
                                     <label for="condicion_impositiva">Condicion impositva</label>
                                     <select name="condicion_impoisitva" id="condicion_impositiva">

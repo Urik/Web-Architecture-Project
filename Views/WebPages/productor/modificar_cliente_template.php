@@ -3,18 +3,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Alta de Tomador</title>
-    <link type="text/css" rel="stylesheet" href="../../../css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/default.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/android.css" />
-    <link type="text/css" rel="stylesheet" href="../../../css/alta_cliente.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/default.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/android.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/alta_cliente.css" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../../js/glDatePicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/glDatePicker.min.js"></script>
 </head>
 
 <body>
 <?php
-if(!isset($_SESSION)){
+if(!isset($data)){
     session_start();
 }
 ?>
@@ -57,49 +57,49 @@ if(!isset($_SESSION)){
                 <div class="span4">
                     <h2>Datos de usuario</h2>
                     <label for="nick">Nombre de usuario</label>
-                    <input type="text" name="nick" id="nick" value="<? $_SESSION['nick'] ?>">
+                    <input type="text" name="nick" id="nick" value="<?= $data['nick'] ?>">
 
                     <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" value="<? $_SESSION['password'] ?>">
+                    <input type="password" name="password" id="password" value="<?= $data['password'] ?>">
 
                     <label for="repeated_password">Repita la contraseña</label>
-                    <input type="password" name="repeated_password" id="repeated_password" value="<? $_SESSION['password'] ?>">
+                    <input type="password" name="repeated_password" id="repeated_password" value="<?= $data['password'] ?>">
 
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<? $_SESSION['email'] ?>">
+                    <input type="text" name="email" id="email" value="<?= $data['email'] ?>">
                 </div>
                 <div class="span8">
                     <h2>Datos personales</h2>
                     <div class="row">
                         <div class="span4">
                             <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" <? $_SESSION['name'] ?>>
+                            <input type="text" name="name" id="name" <?= $data['first_name'] ?>>
 
                             <label for="last_name">Apellido</label>
-                            <input type="text" name="last_name" id="last_name" <? $_SESSION['last_name'] ?>>
+                            <input type="text" name="last_name" id="last_name" <?= $data['last_name'] ?>>
 
                             <label for="birth_date">Fecha de nacimiento</label>
-                            <input type="text" name="birth_date" id="birth_date" onkeypress="return false" value="<? $_SESSION['birth_date'] ?>">
+                            <input type="text" name="birth_date" id="birth_date" onkeypress="return false" value="<?= $data['birth_date'] ?>">
 
                             <label for="address">Direccion</label>
-                            <input type="text" name="address" id="address" value="<? $_SESSION['address'] ?>">
+                            <input type="text" name="address" id="address" value="<?= $data['address'] ?>">
                         </div>
                         <div class="span4">
                             <label for="phone">Telefono</label>
-                            <input type="text" name="phone" id="phone" value="<? $_SESSION['phone'] ?>">
+                            <input type="text" name="phone" id="phone" value="<?= $data['phone'] ?>">
 
                             <label for="cuit">CUIT</label>
-                            <input type="text" name="cuit" id="cuit" value="<? $_SESSION['cuit'] ?>">
+                            <input type="text" name="cuit" id="cuit" value="<?= $data['cuit'] ?>">
 
                             <label for="condicion_impositiva">Condicion impositva</label>
                             <select name="condicion_impoisitva" id="condicion_impositiva">
                                 <?php foreach($condiciones as $condicion): ?>
-                                    <? if($condicion == $_SESSION['condicion_impositiva']) { ?>
-                                        <option value="<? $condicion ?>" selected="selected">
+                                    <? if($condicion == $data['condicion_impositiva']) { ?>
+                                        <option value="<?= $condicion ?>" selected="selected">
                                             <? $condicion ?>
                                         </option>
                                     <? } else { ?>
-                                        <option value="<? $condicion ?>">
+                                        <option value="<?= $condicion ?>">
                                             <? $condicion ?>
                                         </option>
                                     <? } ?>

@@ -1,4 +1,10 @@
 <?php
+require_once dirname(__FILE__) . "/../Others/CondicionImpositivaColumns.php";
+require_once dirname(__FILE__) . "/../Others/CondicionImpositiva.php";
+require_once dirname(__FILE__) . "/../Controllers/DBConnection.php";
+require_once dirname(__FILE__) . "/../Exceptions/DBErrorException.php";
+require_once dirname(__FILE__) . "/../Exceptions/CondicionImpositivaCreationException.php";
+require_once dirname(__FILE__) . "/DAOCommonImpl.php";
 
 
 class CondicionImpositivaDAO extends DAO {
@@ -42,7 +48,7 @@ class CondicionImpositivaDAO extends DAO {
                     $row[CondicionImpositivaColumns::DESCRIPTION]);
             $condiciones[] = $condicion;
         }
-        return $condicion;
+        return $condiciones;
     }
 
     /**

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Home Productor</title>
-<link type="text/css" rel="stylesheet" href="../../css/reset.css" />
-<link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="css/reset.css" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -22,9 +22,9 @@ $usertype = $_SESSION["user_Type_Actual"];
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="../../Controllers/Altas/ClientRegistrationController.php">Alta</a></li>
+                    <li><a href="Controllers/Altas/ClientRegistrationController.php">Alta</a></li>
                     <li><a>Baja</a></li>
-                    <li><a href="../../Controllers/Modifications/ClientModificationController.php?clientId=3">Modificacion</a></li>
+                    <li><a href="Controllers/Modifications/ClientModificationController.php?clientId=3">Modificacion</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -49,6 +49,6 @@ $usertype = $_SESSION["user_Type_Actual"];
     <a href="productor/modif_solicitud.php">Anular Cobertura Solicitada</a><br>
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>

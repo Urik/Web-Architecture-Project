@@ -2,7 +2,12 @@
 
 require_once dirname(__FILE__) . "/../Others/Cliente.php";
 require_once dirname(__FILE__) . "/DAO.php";
+require_once dirname(__FILE__) . "/UserDAO.php";
+require_once dirname(__FILE__) . "/ProducerDAO.php";
 require_once dirname(__FILE__) . "/../Exceptions/ClientCreationException.php";
+require_once dirname(__FILE__) . "/../Controllers/DBConnection.php";
+require_once dirname(__FILE__) . "/../Others/ClientColumns.php";
+require_once dirname(__FILE__) . "/../DAOs/CondicionImpositivaDAO.php";
 
 class ClientDAO extends DAO {
 
@@ -30,8 +35,20 @@ class ClientDAO extends DAO {
         $clients = array();
         foreach ($rows as $row) {
             $user = (new UserDAO())->get($row["user_id"]);
-            $productor = (new ProducerDAO())->get($row["producer_id"]);
-            $cliente = new Cliente($row["id"], $row["nombre"], $row["apellido"], $row["dni"], $row["direccion"], $productor, $user);
+            $productor = (new ProducerDAO())->get($row[ClientColumns::PRODUCTOR_ID]);
+            $condicionImpositiva = (new CondicionImpositivaDAO())->get($row[ClientColumns::CONDICION_IMPOSITIVA_ID]);
+            $cliente = new Cliente($row[ClientColumns::ID],
+                $row[ClientColumns::NOMBRE],
+                $row[ClientColumns::APELLIDO],
+                $row[ClientColumns::DNI],
+                $row[ClientColumns::DIRECCION],
+                $productor,
+                $user,
+                $row[ClientColumns::TELEFONO_1],
+                $row[ClientColumns::TELEFONO_2],
+                $row[ClientColumns::CUIT],
+                $condicionImpositiva
+            );
             $clients[] = $cliente;
         }
         return $clients;

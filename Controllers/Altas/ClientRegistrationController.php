@@ -40,7 +40,7 @@ class AltaTomadorController
             $address = $_POST["address"];
             $condicionImpositiva = $_POST["condicion_impoisitva"];
             $dni = $_POST["dni"];
-            $success = $this->createClient(new UserCreator(), new UserDAO(), $nick, $password,
+            $success = $this->createClient(new UserDAO(), $nick, $password,
                 $email, $birthDay, $firstName, $lastName, $address, $dni, $phone, $cuit);
             if ($success) {
                 $this->view->showSuccess();
@@ -51,7 +51,7 @@ class AltaTomadorController
         }
     }
 
-    public function createClient(UserCreator $userCreator, UserDAO $userDAO, $nick, $password, $email, $birthday,
+    public function createClient(UserDAO $userDAO, $nick, $password, $email, $birthday,
         $firstName, $lastName, $address, $dni, $telefono, $cuit) {
         $success = true;
         try {

@@ -70,11 +70,10 @@ class ClientDAO extends DAO {
         }
         return $clients;
     }
-    
+
     /**
-     * 
-     * @param Cliente $object
-     * @return type
+     * @param $object Cliente
+     * @return success
      */
     public function update($object) {
         return (new DAOCommonImpl())->update($object->getVariablesAsMap(), $this->tableName);

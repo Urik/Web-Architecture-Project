@@ -1,5 +1,5 @@
 <?php
-require_once 'Interfaces/ICreator.php'
+require_once 'Interfaces/ICreator.php';
 
 interface IProducersCreator {
 	public function createProducer($variables);

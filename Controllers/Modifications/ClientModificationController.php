@@ -31,6 +31,14 @@ class ClientModificationController
         }
         //Se actualiza al cliente
         else if (isset($_POST)) {
+            $id = $_POST[ClientColumns::ID];
+            $nombre = $_POST[ClientColumns::NOMBRE];
+            $apellido = $_POST[ClientColumns::APELLIDO];
+            $dni = $_POST[ClientColumns::DNI];
+            $direccion = $_POST[ClientColumns::DIRECCION];
+            $this->clientDao->
+
+
 
         }
         //Se elige al cliente
@@ -70,6 +78,10 @@ class ClientModificationController
 
     public function setClientDAO(ClientDAO $clientDao) {
         $this->clientDao = $clientDao;
+    }
+
+    public function updateClient($client) {
+        return $this->clientDao->update($client);
     }
 }
 if (!isset($_SESSION)) {
